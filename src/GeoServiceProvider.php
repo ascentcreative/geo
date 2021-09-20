@@ -13,7 +13,7 @@ class GeoServiceProvider extends ServiceProvider
     //
    
     $this->mergeConfigFrom(
-        __DIR__.'/config/geo.php', 'geo'
+        __DIR__.'/../config/geo.php', 'geo'
     );
 
   }
@@ -21,9 +21,9 @@ class GeoServiceProvider extends ServiceProvider
   public function boot()
   {
 
-    $this->loadViewsFrom(__DIR__.'/resources/views', 'geo');
+    $this->loadViewsFrom(__DIR__.'/../resources/views', 'geo');
 
-    $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+    $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
     $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -45,7 +45,7 @@ class GeoServiceProvider extends ServiceProvider
     public function bootPublishes() {
 
       $this->publishes([
-        __DIR__.'/Assets' => public_path('vendor/ascent/geo'),
+        __DIR__.'/Assets' => public_path('vendor/ascentcreative/geo'),
     
       ], 'public');
 
