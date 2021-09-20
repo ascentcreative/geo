@@ -14,6 +14,13 @@ class Address extends Base
     public $table = "geo_addresses";
     public $fillable = ['addressable_type', 'addressable_id', 'address_type', 'street1', 'street2', 'street3', 'town', 'city', 'state', 'zip', 'country_id'];
 
+    public function addressable() {
+        return $this->morphTo();
+    }
    
+    public function country() {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
 }
 

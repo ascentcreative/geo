@@ -15,15 +15,15 @@ class CreateGeoAddressesTable extends Migration
     {
         Schema::create('geo_addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('addressable_type');
-            $table->integer('addressable_id');
-            $table->string('address_type');
-            $table->string('street1');
-            $table->string('street2');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip');
-            $table->integer('country_id');
+            $table->string('addressable_type')->index();
+            $table->integer('addressable_id')->index();
+            $table->string('address_type')->nullable()->index();
+            $table->string('street1')->nullable();
+            $table->string('street2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
+            $table->integer('country_id')->nullable()->index();
             $table->timestamps();
         });
     }

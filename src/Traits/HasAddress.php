@@ -65,8 +65,6 @@ trait HasAddress {
      
         $data = session()->pull('extenders._address');
 
-        //dd($data);
-
         $this->address()->save(Address::updateOrCreate(
             ['addressable_type' => get_class($this), 'addressable_id' => $this->id],
             $data
