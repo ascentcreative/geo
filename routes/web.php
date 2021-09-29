@@ -6,6 +6,26 @@ Route::get('/geo-check', function() {
     dump(AscentCreative\Geo\Models\Country::countErrors());
 });
 
+Route::get('/geo-country-tree', function() {
+   
+    $nodes = AscentCreative\Geo\Models\Country::get()->toTree();
+    echo '<PRE>';
+    $traverse = function ($categories, $prefix = '') use (&$traverse) {
+        foreach ($categories as $category) {
+            echo "".$prefix.' '.$category->name . "<br/>";
+    
+            $traverse($category->children, $prefix.'-');
+        }
+    };
+
+    echo '</PRE>';
+    
+    $traverse($nodes);
+
+});
+
+
+
 /* Route::get('/geo-install', function() {
 
     foreach(AscentCreative\Geo\Models\Country::all() as $country) {
