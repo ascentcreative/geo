@@ -22,5 +22,25 @@ class Address extends Base
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function getStringifyAttribute($sep=null) {
+
+        if(!$sep) {
+            $sep = '<br/>';
+        }
+
+        $ary = [
+            $this->street1,
+            $this->street2,
+            $this->street3,
+            $this->town,
+            $this->city,
+            $this->state,
+            $this->zip,
+            $this->country->name
+        ];
+
+        return join($sep, array_filter($ary));
+    }
+
 }
 
