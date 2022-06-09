@@ -23,13 +23,13 @@ trait HasAddress {
       });
 
       static::saving(function($model) { 
-            if(request()->has('_address')) {
+            if(request()->has('address')) {
                 $model->captureAddress();
             }
       });
 
       static::saved(function($model) { 
-        if(request()->has('_address')) {
+        if(request()->has('address')) {
             $model->saveAddress();
           }
       });
@@ -37,7 +37,7 @@ trait HasAddress {
     }
 
     public function initializeHasAddress() {
-        $this->fillable[] = '_address';
+        $this->fillable[] = 'address';
     }
 
     /* define the relationship */
@@ -54,8 +54,8 @@ trait HasAddress {
 
     public function captureAddress() {
 
-        session(['extenders._address' => $this->_address]);
-        unset($this->attributes['_address']);     
+        session(['extenders.address' => $this->address]);
+        unset($this->attributes['address']);     
        
     }
 
@@ -63,7 +63,7 @@ trait HasAddress {
 
     public function saveAddress() {
      
-        $data = session()->pull('extenders._address');
+        $data = session()->pull('extenders.address');
 
         $this->address()->save(Address::updateOrCreate(
             ['addressable_type' => get_class($this), 'addressable_id' => $this->id],
