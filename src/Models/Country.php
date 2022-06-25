@@ -18,6 +18,14 @@ class Country extends Base
     public $table = "geo_countries";
     public $slug_source = 'name';
 
+    protected static function booted()
+    {
+        static::addGlobalScope('hasIso', function($q) {
+            return $q->where('iso', '!=', '');
+        });
+
+    }
+
     //public $fillable = ['addressable_type', 'addressable_id', 'address_type', 'street1', 'street2', 'street3', 'town', 'city', 'state', 'zip', 'country_id'];
 
    
