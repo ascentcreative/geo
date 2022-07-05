@@ -36,7 +36,7 @@ class Address extends Base
             $this->city,
             $this->state,
             $this->zip,
-            $this->country->name
+            $this->country->name ?? null
         ];
 
         return join($sep, array_filter($ary));
