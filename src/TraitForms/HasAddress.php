@@ -12,7 +12,11 @@ class HasAddress extends Subform {
 
         parent::__construct('geo_address');
 
-        $this->children([
+    }
+
+    public function initialise() {
+
+       return $this->children([
             Input::make('address[street1]', 'Street 1'),
             Input::make('address[street2]', 'Street 2'),
             Input::make('address[city]', 'City'),
