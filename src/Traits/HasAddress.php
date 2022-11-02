@@ -16,32 +16,36 @@ trait HasAddress {
 
     use Extender;
 
-    public static function bootHasAddress() {
+    // public static function bootHasAddress() {
   
-      static::deleted(function ($model) {
-        $model->deleteAddress();
-      });
+    //   static::deleted(function ($model) {
+    //     $model->deleteAddress();
+    //   });
 
-      static::saving(function($model) { 
-            if(request()->has('address')) {
-                $model->captureAddress();
-            }
-      });
+    //   static::saving(function($model) { 
+    //         if(request()->has('address')) {
+    //             $model->captureAddress();
+    //         }
+    //   });
 
-      static::saved(function($model) { 
-        if(request()->has('address')) {
-            $model->saveAddress();
-          }
-      });
+    //   static::saved(function($model) { 
+    //     if(request()->has('address')) {
+    //         $model->saveAddress();
+    //       }
+    //   });
 
-    }
+    // }
 
     public function initializeHasAddress() {
-        $this->fillable[] = 'address';
+        // $this->fillable[] = 'address';
+        $this->addCapturable('address');
     }
 
     /* define the relationship */
     public function address() {
+
+        // dump('this');
+
         $q = $this->morphOne(\AscentCreative\Geo\Models\Address::class, 'addressable');
 
         // if($type) {
@@ -52,23 +56,36 @@ trait HasAddress {
      }
 
 
-    public function captureAddress() {
+    // public function captureAddress() {
 
-        session(['extenders.address' => $this->address]);
-        unset($this->attributes['address']);     
+    //     session(['extenders.address' => $this->address]);
+    //     unset($this->attributes['address']);     
        
-    }
+    // }
 
     
 
-    public function saveAddress() {
+    public function saveAddress($data) {
      
-        $data = session()->pull('extenders.address');
+        // $data = session()->pull('extenders.address');
 
-        $this->address()->save(Address::updateOrCreate(
+        // dump(get_class($this));
+        // dump($this->id);
+        // dd($data);
+
+        $data->save();
+// 
+        // $this->address()->updateOrCreate($data);
+        
+        Address::updateOrCreate(
             ['addressable_type' => get_class($this), 'addressable_id' => $this->id],
-            $data
-        ));
+            $data->toArray()
+        );
+
+        // $this->address()->save(Address::updateOrCreate(
+        //     ['addressable_type' => get_class($this), 'addressable_id' => $this->id],
+        //     $data
+        // ));
 
     }
 
