@@ -73,13 +73,13 @@ trait HasAddress {
         // dump($this->id);
         // dd($data);
 
-        $data->save();
+        // $data->save();
 // 
         // $this->address()->updateOrCreate($data);
         
         Address::updateOrCreate(
             ['addressable_type' => get_class($this), 'addressable_id' => $this->id],
-            $data->toArray()
+            $data //->toArray()
         );
 
         // $this->address()->save(Address::updateOrCreate(
