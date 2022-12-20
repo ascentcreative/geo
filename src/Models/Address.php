@@ -42,5 +42,9 @@ class Address extends Base
         return join($sep, array_filter($ary));
     }
 
+    public function stringify($sep = null) {
+        return $this->getStringifyAttribute($sep);
+    }
+
 }
 
