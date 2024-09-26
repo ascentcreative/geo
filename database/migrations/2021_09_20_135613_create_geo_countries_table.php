@@ -30,8 +30,8 @@ class CreateGeoCountriesTable extends Migration
 
 
         \DB::insert(
-            \DB::Raw("
-        INSERT INTO `geo_countries` (`id`, `_lft`, `_rgt`, `parent_id`, `name`, `slug`, `iso`, `iso3`, `lat`, `lng`, `created_at`, `updated_at`)
+            // \DB::Raw("
+        "INSERT INTO `geo_countries` (`id`, `_lft`, `_rgt`, `parent_id`, `name`, `slug`, `iso`, `iso3`, `lat`, `lng`, `created_at`, `updated_at`)
 VALUES
 	(903, 1, 128, NULL, 'Africa', 'africa', '', '', -8.78, 34.51, NULL, '2021-09-20 15:54:54'),
 	(904, 2, 43, 903, 'Eastern Africa', 'eastern-africa', '', '', 1.96, 37.30, NULL, '2021-09-20 15:54:54'),
@@ -353,7 +353,7 @@ VALUES
 	(1351, 633, 634, 1346, 'Nauru', 'nauru', 'NR', 'NRU', -0.52, 166.93, NULL, '2021-09-20 15:54:55'),
 	(1352, 635, 636, 1346, 'Northern Mariana Islands', 'northern-mariana-islands', 'MP', 'MNP', 15.10, 145.67, NULL, '2021-09-20 15:54:55'),
 	(1353, 637, 638, 1346, 'Palau', 'palau', 'PW', 'PLW', 7.51, 134.58, NULL, '2021-09-20 15:54:55');"
-                )
+                // )
            );
 
 
