@@ -13,6 +13,7 @@ class CommonCountries extends Migration
      */
     public function up()
     {
+
             Schema::table('geo_countries', function (Blueprint $table) {
                 $table->tinyInteger('is_common')->default(0)->index();
             });
