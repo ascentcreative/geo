@@ -27,6 +27,7 @@ class GeoServiceProvider extends ServiceProvider
 
     $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
+    $this->bootPublishes();
     
   }
 
@@ -44,13 +45,13 @@ class GeoServiceProvider extends ServiceProvider
 
     public function bootPublishes() {
 
-      $this->publishes([
-        __DIR__.'/Assets' => public_path('vendor/ascentcreative/geo'),
+    //   $this->publishes([
+    //     __DIR__.'/Assets' => public_path('vendor/ascentcreative/geo'),
     
-      ], 'public');
+    //   ], 'public');
 
       $this->publishes([
-        __DIR__.'/config/geo.php' => config_path('geo.php'),
+        __DIR__.'/../config/geo.php' => config_path('geo.php'),
       ]);
 
     }

@@ -12,7 +12,16 @@ class Address extends Base
     use HasFactory;
 
     public $table = "geo_addresses";
-    public $fillable = ['addressable_type', 'addressable_id', 'address_type', 'street1', 'street2', 'street3', 'town', 'city', 'state', 'zip', 'country_id'];
+    public $fillable = ['addressable_type', 'addressable_id', 'address_type', 'street1', 'street2', 'street3', 'town', 'city', 'state', 'zip', 'country_id', 'lat', 'lng'];
+
+    protected static function booted() {
+
+       static::saved(function($model) { 
+
+       });
+
+    }
+
 
     public function addressable() {
         return $this->morphTo();
@@ -45,6 +54,7 @@ class Address extends Base
     public function stringify($sep = null) {
         return $this->getStringifyAttribute($sep);
     }
+
 
 }
 
