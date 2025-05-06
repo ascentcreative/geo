@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use AscentCreative\CMS\Models\Base;
 
+use AscentCreative\Geo\Events\AddressSaved;
+
 class Address extends Base
 {
     use HasFactory;
@@ -17,7 +19,7 @@ class Address extends Base
     protected static function booted() {
 
        static::saved(function($model) { 
-
+            AddressSaved::dispatch($model);
        });
 
     }

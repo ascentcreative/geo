@@ -16,7 +16,7 @@ return new class extends Migration
             
         Schema::table('geo_addresses', function (Blueprint $table) {
             $table->decimal('lat', 10, 4)->after('country_id')->index()->nullable();
-            $table->decimal('lng', 10, 4)->after('country_id')->index()->nullable();
+            $table->decimal('lng', 10, 4)->after('lat')->index()->nullable();
 
             $table->index(['lat', 'lng']);
         });

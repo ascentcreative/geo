@@ -16,6 +16,8 @@ class GeoServiceProvider extends ServiceProvider
         __DIR__.'/../config/geo.php', 'geo'
     );
 
+    $this->app->register(\AscentCreative\Geo\Providers\EventServiceProvider::class);
+
   }
 
   public function boot()

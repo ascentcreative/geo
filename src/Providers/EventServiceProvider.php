@@ -36,12 +36,10 @@ class EventServiceProvider extends ServiceProvider
     public function register()
     {
        
-
         Event::listen(
             AddressSaved::class,
             [AddressSavedListener::class, 'handle']
         );
-
         
     }
 }

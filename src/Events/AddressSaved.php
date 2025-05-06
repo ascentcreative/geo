@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
  * Triggered whenever the Basket model is updated (add / remove items, coupon codes, shipping details etc)
  */
 class AddressSaved {
-    
+
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $address;
